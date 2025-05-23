@@ -20,13 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
-        // Monta a lista de participantes (ou mensagem caso não haja)
+        // Renderiza participantes como badges
         let participantsHtml = "";
         if (details.participants.length > 0) {
           participantsHtml = `
             <p><strong>Inscritos:</strong></p>
             <ul class="participants-list">
-              ${details.participants.map(email => `<li>${email}</li>`).join("")}
+              ${details.participants.map(email => `
+                <li>
+                  <span class="participant-badge">${email}</span>
+                </li>
+              `).join("")}
             </ul>
           `;
         } else {
